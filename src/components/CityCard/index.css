@@ -1,0 +1,25 @@
+.card {
+  min-height: 300px;
+  color: #fff;
+  align-items: center;
+  border-radius: 20px !important;
+  border: 0;
+  background: hsla(201, 75%, 36%, 1);
+  background: linear-gradient(
+    0deg,
+    hsla(201, 75%, 36%, 1) 0%,
+    hsla(216, 56%, 72%, 1) 100%
+  );
+}
+
+.card .card-body {
+  z-index: 2;
+}
+
+.card .card-subtitle {
+  color: white;
+}
+
+.card .card-text {
+  font-size: 12px;
+}

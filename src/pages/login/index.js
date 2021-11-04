@@ -1,6 +1,5 @@
 import "./index.css";
 import {
-  Button,
   Card,
   CardBody,
   Col,
@@ -9,12 +8,12 @@ import {
   Input,
   Label,
   Row,
-  Spinner,
 } from "reactstrap";
 import { useCallback, useContext, useState } from "react";
 import { Navigate } from "react-router";
 import { ROUTE_HOME } from "../../utils/routes";
 import { DashboardContext } from "../../contexts/DashboardContext";
+import Button from "../../components/Button";
 
 const LoginPage = () => {
   const { setUserLogged } = useContext(DashboardContext);
@@ -72,15 +71,9 @@ const LoginPage = () => {
                   color="primary"
                   disabled={!validateForm()}
                   className="w-100"
+                  isLoading={isLoading}
                 >
-                  {isLoading ? (
-                    <Spinner
-                      className={"position-relative visible"}
-                      size="sm"
-                    />
-                  ) : (
-                    <>Log In</>
-                  )}
+                  Log In
                 </Button>
               </Form>
             </CardBody>

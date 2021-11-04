@@ -1,29 +1,21 @@
-import {
-  Card,
-  CardBody,
-  CardImg,
-  CardSubtitle,
-  CardText,
-  CardTitle,
-} from "reactstrap";
+import "./index.css";
+import { Card, CardBody, CardSubtitle, CardText, CardTitle } from "reactstrap";
+import { ROUTE_WEATHER_ICON } from "../../utils/routes";
 
-const CityCard = ({ image, name, temperature, weatherDescription }) => {
+const CityCard = ({ date, icon, name, temperature, weatherDescription }) => {
   return (
-    <Card className="my-3">
-      <CardImg
-        top
-        alt="Card image cap"
-        src="https://picsum.photos/318/180"
-        width="100%"
-      />
+    <Card className="my-3 text-center each-city">
       <CardBody>
-        <CardTitle tag="h5">Card title</CardTitle>
-        <CardSubtitle className="mb-2 text-muted" tag="h6">
-          Card subtitle
+        <img src={ROUTE_WEATHER_ICON(icon)} />
+        <CardTitle tag="h1" className="py-2 text-uppercase">
+          {parseInt(temperature)}ºC
+        </CardTitle>
+        <CardSubtitle className="mb-2" tag="h4">
+          {name}
         </CardSubtitle>
-        <CardText>
-          This is a wider card with supporting text below as a natural lead-in
-          to additional content. This content is a little bit longer.
+        <CardText className="text-uppercase">{weatherDescription}</CardText>
+        <CardText className="text-uppercase">
+          {new Date(date).toLocaleDateString()}
         </CardText>
       </CardBody>
     </Card>
