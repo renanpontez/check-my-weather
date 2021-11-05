@@ -4,6 +4,7 @@ import { Button, Col, Row } from "reactstrap";
 import CityCard from "../../components/CityCard";
 import SectionTitle from "../../components/SectionTitle";
 import { DashboardContext } from "../../contexts/DashboardContext";
+import { ROUTE_SEARCH } from "../../utils/routes";
 
 const HistoryPage = memo(({ numberOfItems = 10 }) => {
   const { citiesSearched } = useContext(DashboardContext);
@@ -16,7 +17,7 @@ const HistoryPage = memo(({ numberOfItems = 10 }) => {
         </Col>
         {numberOfItems === 10 && (
           <Col xs="2">
-            <Link to="/search">
+            <Link to={ROUTE_SEARCH}>
               <Button className="w-100" color="primary">
                 New search <i className="bi bi-search ml-5"></i>
               </Button>
