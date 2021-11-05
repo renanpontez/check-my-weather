@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { Col, Form, Input, Row } from "reactstrap";
 import { DashboardContext } from "../../contexts/DashboardContext";
 import { getWeatherByCityName } from "../../services/weather.api";

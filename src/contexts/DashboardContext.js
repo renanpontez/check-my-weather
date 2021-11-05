@@ -20,6 +20,7 @@ export const DashboardProvider = ({ children }) => {
     const uniqueCities = validCities.filter((eachCity) => {
       if (citiesSearched.some((t) => t.id === eachCity.id)) {
         toast.warn(`We've already added ${eachCity.name} on the list.`);
+        return null;
       } else {
         return eachCity;
       }
