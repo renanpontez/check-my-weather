@@ -11,7 +11,7 @@ import {
 } from "reactstrap";
 import { useCallback, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ROUTE_HOME, ROUTE_SEARCH } from "../../utils/routes";
+import { ROUTE_SEARCH } from "../../utils/routes";
 import { DashboardContext } from "../../contexts/DashboardContext";
 import Button from "../../components/Button";
 
@@ -22,7 +22,6 @@ const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [loginSuccess, setLoginSuccess] = useState(false);
 
   const handleSubmit = () => {
     setIsLoading(true);

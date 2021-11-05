@@ -1,7 +1,5 @@
-import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "reactstrap";
-import { DashboardContext } from "../../contexts/DashboardContext";
 import { ROUTE_SEARCH } from "../../utils/routes";
 import "./index.css";
 
