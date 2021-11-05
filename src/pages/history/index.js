@@ -1,9 +1,9 @@
 import { memo, useContext } from "react";
+import { Link } from "react-router-dom";
 import { Button, Col, Row } from "reactstrap";
 import CityCard from "../../components/CityCard";
 import SectionTitle from "../../components/SectionTitle";
 import { DashboardContext } from "../../contexts/DashboardContext";
-import { ROUTE_SEARCH } from "../../utils/routes";
 
 const HistoryPage = memo(({ numberOfItems = 10 }) => {
   const { citiesSearched } = useContext(DashboardContext);
@@ -16,9 +16,11 @@ const HistoryPage = memo(({ numberOfItems = 10 }) => {
         </Col>
         {numberOfItems === 10 && (
           <Col xs="2">
-            <Button className="w-100" color="primary" href={ROUTE_SEARCH}>
-              New search <i className="bi bi-search ml-5"></i>
-            </Button>
+            <Link to="/search">
+              <Button className="w-100" color="primary">
+                New search <i className="bi bi-search ml-5"></i>
+              </Button>
+            </Link>
           </Col>
         )}
       </Row>
@@ -26,8 +28,9 @@ const HistoryPage = memo(({ numberOfItems = 10 }) => {
         {citiesSearched.length ? (
           <>
             {citiesSearched.map((eachCity) => (
-              <Col xs="3">
+              <Col xs="3" key={eachCity.id}>
                 <CityCard
+                  id={eachCity.id}
                   date={eachCity.date}
                   name={eachCity.name}
                   temperature={eachCity.main.temp}
