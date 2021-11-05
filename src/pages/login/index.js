@@ -10,35 +10,33 @@ import {
   Row,
 } from "reactstrap";
 import { useCallback, useContext, useState } from "react";
-import { Navigate } from "react-router";
-import { ROUTE_HOME } from "../../utils/routes";
+import { useNavigate } from "react-router-dom";
+import { ROUTE_HOME, ROUTE_SEARCH } from "../../utils/routes";
 import { DashboardContext } from "../../contexts/DashboardContext";
 import Button from "../../components/Button";
 
 const LoginPage = () => {
-  const { setUserLogged } = useContext(DashboardContext);
+  const navigate = useNavigate();
+  const { userLogged, setUserLogged } = useContext(DashboardContext);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [loginSuccess, setLoginSuccess] = useState(false);
 
-  const handleSubmit = async () => {
+  const handleSubmit = () => {
     setIsLoading(true);
 
     // Fake API connection
-    setTimeout(() => {
-      setUserLogged({ email, password });
-      setLoginSuccess(true);
-    }, 1500);
+    setUserLogged({ email, password });
   };
 
   const validateForm = useCallback(() => {
     return email.length && password.length;
   }, [email, password]);
 
-  if (loginSuccess) {
-    return <Navigate to={ROUTE_HOME} replace />;
+  if (userLogged) {
+    navigate(ROUTE_SEARCH);
   }
 
   return (
@@ -66,7 +64,6 @@ const LoginPage = () => {
                   />
                 </FormGroup>
                 <Button
-                  type="button"
                   color="primary"
                   disabled={!validateForm()}
                   className="w-100"
